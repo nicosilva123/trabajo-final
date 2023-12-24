@@ -1,0 +1,41 @@
+{% extends "AppCoder/padre.html" %}
+{% block contenidoQueCambia %}
+<style>
+    .libro {
+        background-color: lightgray;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .elementos {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+
+</style>
+
+<div class="libro">
+    <h1>Detalle del libro</h1>
+    <h3>Titulo: {{ libros.titulo }}</h3>
+    <h5>{{ libros.subtitulo }}</h5>
+    <div class="container">
+        <div class="row elementos">
+            <div class="col-6">
+                <p>{{ libros.cuerpo }}</p>
+            </div>
+            <div class="col-6">
+                {% if libros.imagen %}
+                <img src="../../{{ libros.imagen }}" alt="img"/>
+                {% endif %}
+            </div>
+        </div>
+        <p>{{ libros.autor }} // {{ libros.fecha }}</p>
+    </div>
+    <a href="{% url 'AppCoder:leer_todo' %}">Regresar</a>
+    <br>
+    <a href="{% url 'AppCoder:preguntar_libro' libros.id%}">Deja tu pregunta</a>
+</div>
+
+{% endblock %}

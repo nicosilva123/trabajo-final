@@ -1,0 +1,32 @@
+{% extends 'AppCoder/padre.html' %}
+
+{% block contenidoQueCambia%}
+<style>
+    *{
+        text-align: center;
+    }
+
+    div{
+        margin-top: 10px;
+    }
+</style>
+<h1>Preguntas</h1>
+<form action="">
+    <div>
+        <label for="">Titulo: </label>
+        <input type="text" value="{{ libros.titulo }}">
+    </div>
+    <div>
+        <label for="">Autor: </label>
+        <input type="text" value="{{ libros.autor }}">
+    </div>
+    <div>
+        <label for="t">Mensaje: </label>
+        <br>
+        <textarea name="t" id="t" cols="30" rows="5"></textarea>
+    </div>
+    <input type="submit">
+    <br>
+    <a href="/AppCoder/leer_todo/">Volver</a>
+</form>
+{% endblock%}

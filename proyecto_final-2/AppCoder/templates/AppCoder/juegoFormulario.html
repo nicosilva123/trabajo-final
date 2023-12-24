@@ -1,0 +1,21 @@
+{% extends "AppCoder/padre.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+{% block contenidoQueCambia %}
+<body style="background-color: rgb(136, 255, 162); text-align: center; ">
+    <form style="margin-top: 20px;" action="/AppCoder/crea_juego/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <input style="border-radius: 5px; height: 40px; margin-bottom: 20px;"  type="submit" value="Guardar">
+    </form> 
+</body>
+{% endblock %}
+
+</html>

@@ -1,0 +1,41 @@
+{% extends "AppCoder/padre.html" %}
+{% block contenidoQueCambia %}
+<style>
+    .estudio {
+        background-color: lightgray;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .elementos {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+
+</style>
+
+<div class="estudio">
+    <h1>Detalle de la materia</h1>
+    <h3>Titulo: {{ estudio.titulo }}</h3>
+    <h5>{{ estudio.subtitulo }}</h5>
+    <div class="container">
+        <div class="row elementos">
+            <div class="col-6">
+                <p>{{ estudio.cuerpo }}</p>
+            </div>
+            <div class="col-6">
+                {% if estudio.imagen %}
+                <img src="../../{{ estudio.imagen }}" alt="img"/>
+                {% endif %}
+            </div>
+        </div>
+        <p>{{ estudio.autor }} // {{ estudio.fecha }}</p>
+    </div>
+    <a href="{% url 'AppCoder:leer_todo' %}">Regresar</a>
+    <br>
+    <a href="{% url 'AppCoder:preguntar_estudio' estudio.id%}">Deja tu pregunta</a>
+</div>
+
+{% endblock %}

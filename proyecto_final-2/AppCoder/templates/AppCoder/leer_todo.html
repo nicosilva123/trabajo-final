@@ -1,0 +1,171 @@
+{% extends "AppCoder/padre.html" %}
+
+{% block contenidoQueCambia %}
+<style>
+    .messages {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .info, .success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+
+    .warning {
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+    }
+
+    .error {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+    .messages li {
+        margin: 5px 0;
+        padding: 5px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    h4{
+        color: #4a90e2; 
+        border-bottom: 2px solid #4a90e2; 
+        padding-bottom: 10px; text-align: center;
+        margin-top: 15px;
+    }
+
+    .agregar {
+        background-color: #4CAF50; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 15px;
+    }
+
+    .buscar {
+        background-color: #4caf8c; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer;
+    }
+
+    h6{
+        color: #333; background-color: #eaf2ff; padding: 8px; border-radius: 5px; margin-bottom: 10px; flex-grow: 1;
+    }
+
+    .eliminar{
+        background-color:  #FF5733; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;
+    }
+
+    .editar{
+        background-color: #4a90e2; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;
+    }
+
+    .leer{
+        background-color: #d0e24a; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;
+    }
+
+</style>
+
+
+<div class="containter" style="font-family: Arial, sans-serif; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <div class="row">
+        <div class="col-4" style="justify-content: space-between; align-items: center;">
+            <h4>Blogs de videojuegos</h4>
+            <button class="agregar">
+                <a href="{% url 'AppCoder:crea_juego' %}">Agregar</a>
+            </button>
+            {% if videojuegos %}
+                <button class="buscar">
+                    <a href="{% url 'AppCoder:juegos_buscar' %}">Buscar</a>
+                </button>
+                {% for videojuego in videojuegos %}
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h6>{{ videojuego.titulo }} / {{ videojuego.autor }}</h6>
+                    <div>
+                        <button class="leer">
+                            <a href="{% url 'AppCoder:juego' videojuego.id %}">Leer Mas</a>
+                        </button>
+                        <button class="eliminar">
+                            <a href="{% url 'AppCoder:eliminar_juego' videojuego.pk %}">Borrar</a>
+                        </button>
+                        <button class="editar">
+                            <a href="{% url 'AppCoder:editar_juego' videojuego.pk %}">Editar</a>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <h1>Lista vacia</h1>
+            {% endif %}
+        </div>
+        <div class="col-4" style="justify-content: space-between; align-items: center;">
+            <h4>Blogs de libros</h4>
+
+            <button class="agregar">
+                <a href="{% url 'AppCoder:crea_libro' %}">Agregar</a>
+            </button>
+            {% if libros %}
+            <button class="buscar">
+                <a href="{% url 'AppCoder:libro_buscar' %}">Buscar</a>
+            </button>
+                {% for libro in libros %}
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h6>{{ libro.titulo }} / {{ libro.autor }}</h6>
+                    
+                    <div>
+                        <button class="leer">
+                            <a href="{% url 'AppCoder:libro' libro.id %}">Leer Mas</a>
+                        </button>
+                        <button class="eliminar">
+                            <a href="{% url 'AppCoder:eliminar_libro' libro.pk %}">Borrar</a>
+                        </button>
+                        <button class="editar">
+                            <a href="{% url 'AppCoder:editar_libro' libro.pk %}">Editar</a>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <h1>Lista vacia</h1>
+            {% endif %}
+        </div>
+        <div class="col-4" style="justify-content: space-between; align-items: center;">
+            <h4>Blogs de estudio</h4>
+            
+            <button class="agregar">
+                <a href="{% url 'AppCoder:crea_estudio' %}">Agregar</a>
+            </button>
+            {% if estudio %}
+                <button class="buscar">
+                    <a href="{% url 'AppCoder:estudioBuscar' %}">Buscar</a>
+                </button>
+                {% for estudioo in estudio %}
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h6>{{ estudioo.titulo }} / {{ estudioo.autor }}</h6>
+                    <div>
+                        <button class="leer">
+                            <a href="{% url 'AppCoder:estudioo' estudioo.id %}">Leer Mas</a>
+                        </button>
+                        <button class="eliminar">
+                            <a href="{% url 'AppCoder:eliminar_estudio' estudioo.pk %}">Borrar</a>
+                        </button>
+                        <button class="editar">
+                            <a href="{% url 'AppCoder:editar_estudio' estudioo.pk %}">Editar</a>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <h1>Lista vacia</h1>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

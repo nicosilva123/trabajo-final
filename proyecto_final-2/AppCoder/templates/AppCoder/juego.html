@@ -1,0 +1,41 @@
+{% extends "AppCoder/padre.html" %}
+{% block contenidoQueCambia %}
+<style>
+    .juego {
+        background-color: lightgray;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .elementos {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+
+</style>
+
+<div class="juego">
+    <h1>Detalle del Juego</h1>
+    <h3>Titulo: {{ videojuegos.titulo }}</h3>
+    <h5>{{ videojuegos.subtitulo }}</h5>
+    <div class="container">
+        <div class="row elementos">
+            <div class="col-6">
+                <p>{{ videojuegos.cuerpo }}</p>
+            </div>
+            <div class="col-6">
+                {% if videojuegos.imagen %}
+                <img src="../../{{ videojuegos.imagen }}" alt="img"/>
+                {% endif %}
+            </div>
+        </div>
+        <p>{{ videojuegos.autor }} // {{ videojuegos.fecha }}</p>
+    </div>
+    <a href="{% url 'AppCoder:leer_todo' %}">Regresar</a>
+    <br>
+    <a href="{% url 'AppCoder:preguntar_vd' videojuegos.id%}">Deja tu pregunta</a>
+</div>
+
+{% endblock %}

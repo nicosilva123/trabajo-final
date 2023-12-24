@@ -1,0 +1,57 @@
+{% extends "AppCoder/padre.html" %}
+
+{% block contenidoQueCambia %}
+
+<style>
+    .centered-container {
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        flex-direction: column;
+        height: 30vh;
+    }
+
+    .warning-message {
+        background-color: #ffaaa8;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .warning-message h1 {
+        color: red;
+    }
+
+    .warning-message p {
+        font-size: 18px;
+    }
+
+    .submit-button {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="centered-container">
+    {{ nombre }}
+    <div class="warning-message">
+        <h1>Borrar Juego: {{videojuegos.titulo}}</h1>
+        <p>Estas a punto de eliminar el Blog {{videojuegos.titulo}} / {{videojuegos.subtitulo}} de {{videojuegos.autor}}</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Eliminar" class="submit-button">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
